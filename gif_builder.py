@@ -57,12 +57,12 @@ class GifBuilder:
 
     def build(self, file):
         clip = mpy.VideoClip(
-            self.make_frame,
+            self.__make_frame,
             duration=self.duration
         )
         clip.write_gif(file, fps=self.fps)
 
-    def make_frame(self, t):  # creapes a np.array interpreted as frame in rgb
+    def __make_frame(self, t):  # creates a np.array interpreted as frame in rgb
         translate = self.formula(t)  # getting the translation law for current moment
         w, h = self.size
         a = np.zeros((w, h, 3))
